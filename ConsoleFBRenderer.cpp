@@ -31,7 +31,11 @@ void ConsoleFBRenderer::Clear()
 
 void ConsoleFBRenderer::Render(Console *console, int frame)
 {
-	auto cursorOn = (frame / cursorBlinkFrames) % 2;
+	bool cursorOn = false;
+	if (cursorBlinkFrames > 0)
+	{
+		cursorOn = (frame / cursorBlinkFrames) % 2;
+	}
 
 	int cursorX;
 	int cursorY;
