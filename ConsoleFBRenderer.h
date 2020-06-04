@@ -12,10 +12,11 @@ public:
 		struct fb_var_screeninfo *fbinfo, uint16_t *framebuffer,
 		bool *fontbuffer, uint16_t fontBufferWidth, uint16_t fontBufferHeight,
 		uint16_t fontCharsWide, uint16_t fontCharsHigh,
-		uint16_t foregroundColour, uint16_t backgroundColour);
+		uint16_t foregroundColour, uint16_t backgroundColour,
+		int cursorBlinkFrames);
 
 	void Clear();
-	void Render(Console *console);
+	void Render(Console *console, int frame);
 	void SetColours(uint16_t foregroundColour, uint16_t backgroundColour);
 
 private:
@@ -30,4 +31,5 @@ private:
 	uint16_t charPixelsHigh;
 	uint16_t foregroundColour;
 	uint16_t backgroundColour;
+	int cursorBlinkFrames;
 };

@@ -24,6 +24,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 #include <sys/fcntl.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
@@ -114,9 +115,13 @@ int main(int argc, char **argv)
 		console.PrintLine("occaecat cupidatat non proident, sunt in culpa qui officia");
 		console.PrintLine("deserunt mollit anim id est laborum.");
 
-		ConsoleFBRenderer renderer(&info, buffer, fontBuffer, font.get_width(), font.get_height(), fontCharsPerLine, fontCharsLines, colourFg, colourBg);
+		ConsoleFBRenderer renderer(&info, buffer, fontBuffer, font.get_width(), font.get_height(), fontCharsPerLine, fontCharsLines, colourFg, colourBg, 1);
 
-		renderer.Render(&console);
+		for (int i = 0; i < 120; i++)
+		{
+			renderer.Render(&console, i);
+			usleep(500);
+		}
 
 		munmap(buffer, bufferSize);
 	}
