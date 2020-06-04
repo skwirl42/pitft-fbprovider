@@ -32,6 +32,7 @@
 #include <png++/png.hpp>
 
 #include "Console.h"
+#include "ConsoleFBRenderer.h"
 
 const int fontCharsPerLine = 16;
 const int fontCharsLines = 8;
@@ -70,7 +71,7 @@ int main(int argc, char **argv)
 	{
 		for (uint16_t x = 0; x < font.get_width(); x++)
 		{
-			fontBuffer[y * font.get_width() + x] = font.get_pixel(x, y);
+			fontBuffer[y * font.get_width() + x] = font.get_pixel(x, y) > 0;
 		}
 	}
 
@@ -113,26 +114,9 @@ int main(int argc, char **argv)
 		console.PrintLine("occaecat cupidatat non proident, sunt in culpa qui officia");
 		console.PrintLine("deserunt mollit anim id est laborum.");
 
-		console.Visit([&](int x, int y, char character, CharacterAttribute attribute)
-		{
-			auto xFBStart = x * charWidth;
-			auto yFBStart = y * charHeight;
-			auto charXStart = (character % fontCharsPerLine) * charWidth;
-			auto charYStart = (character / fontCharsPerLine) * charHeight;
+		ConsoleFBRenderer renderer(&info, buffer, fontBuffer, font.get_width(), font.get_height(), fontCharsPerLine, fontCharsLines, colourFg, colourBg);
 
-			for (uint16_t charLine = 0; charLine < charHeight; charLine++)
-			{
-				for (uint16_t charColumn = 0; charColumn < charWidth; charColumn++)
-				{
-					auto charValue = fontBuffer[(charYStart + charLine) * font.get_width() + (charXStart + charColumn)];
-					if ((int)attribute & (int)CharacterAttribute::Inverted)
-					{
-						charValue = !charValue;
-					}
-					buffer[(yFBStart + charLine) * info.xres + xFBStart + charColumn] = charValue ? colourFg : colourBg;
-				}
-			}
-		});
+		renderer.Render(&console);
 
 		munmap(buffer, bufferSize);
 	}

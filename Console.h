@@ -5,7 +5,7 @@
 enum class CharacterAttribute : int
 {
 	None		= 0,
-	Inverted	= 1 >> 0,
+	Inverted	= 1 << 0,
 };
 
 class Console
@@ -13,6 +13,9 @@ class Console
 public:
 	Console(int width, int height);
 	~Console();
+
+	int GetWidth() { return width; }
+	int GetHeight() { return height; }
 
 	void SetChar(int x, int y, char character);
 	char GetChar(int x, int y);

@@ -1,6 +1,6 @@
 LDFLAGS=`libpng-config --ldflags`
 CFLAGS=-I. -Wall
-OBJ = fbprovider.o Console.o
+OBJ = fbprovider.o Console.o ConsoleFBRenderer.o
 
 CC=g++
 
