@@ -144,6 +144,15 @@ void Console::Visit(std::function<void(int x, int y, char character, CharacterAt
 	}
 }
 
+void Console::Clear()
+{
+	std::memset(buffer, 0, bufferSize);
+	std::memset(attributeBuffer, 0, bufferSize * sizeof(CharacterAttribute));
+	currentAttribute = CharacterAttribute::None;
+	cursorX = 0;
+	cursorY = 0;
+}
+
 void Console::Reset()
 {
 	if (buffer != nullptr)
@@ -154,7 +163,6 @@ void Console::Reset()
 	bufferSize = width * height;
 
 	buffer = new char[bufferSize];
-	std::memset(buffer, 0, bufferSize);
 
 	if (attributeBuffer != nullptr)
 	{
@@ -162,9 +170,5 @@ void Console::Reset()
 	}
 
 	attributeBuffer = new CharacterAttribute[bufferSize];
-	std::memset(attributeBuffer, 0, bufferSize);
-
-	currentAttribute = CharacterAttribute::None;
-	cursorX = 0;
-	cursorY = 0;
+	Clear();
 }

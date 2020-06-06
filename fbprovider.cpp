@@ -29,6 +29,7 @@
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <linux/fb.h>
+#include <time.h>
 
 #include <png++/png.hpp>
 
@@ -94,6 +95,7 @@ int main(int argc, char **argv)
 
 		size_t bufferSize = info.bits_per_pixel * info.xres * info.yres;
 		uint16_t *buffer = reinterpret_cast<uint16_t*>(mmap(NULL, bufferSize, PROT_READ | PROT_WRITE, MAP_SHARED, fb, 0));
+
 		auto colourBg = 0x0000;
 		auto colourFg = 0x07E0;
 
@@ -115,12 +117,34 @@ int main(int argc, char **argv)
 		console.PrintLine("occaecat cupidatat non proident, sunt in culpa qui officia");
 		console.PrintLine("deserunt mollit anim id est laborum.");
 
-		ConsoleFBRenderer renderer(&info, buffer, fontBuffer, font.get_width(), font.get_height(), fontCharsPerLine, fontCharsLines, colourFg, colourBg, 1);
+		int cursorX;
+		int cursorY;
+		console.GetCursor(cursorX, cursorY);
+		console.SetChar(cursorX, cursorY, '*');
 
+		ConsoleFBRenderer renderer(&info, buffer, fontBuffer, font.get_width(), font.get_height(), fontCharsPerLine, fontCharsLines, colourFg, colourBg, 1);
+		renderer.Clear();
+
+		struct timespec start;
+		struct timespec end;
 		for (int i = 0; i < 120; i++)
 		{
+			clock_gettime(CLOCK_MONOTONIC, &start);
 			renderer.Render(&console, i);
-			usleep(500);
+			clock_gettime(CLOCK_MONOTONIC, &end);
+
+			int msElapsed = (int)((end.tv_nsec - start.tv_nsec) / 1000000);
+
+			if (end.tv_sec == start.tv_sec)
+			{
+				printf("Took %d ms to render\n", msElapsed);
+				usleep(500 - msElapsed);
+			}
+			else
+			{
+				printf("Timer rolled over and I'm too lazy to do the calculations\n");
+				usleep(250);
+			}
 		}
 
 		munmap(buffer, bufferSize);

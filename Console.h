@@ -34,6 +34,8 @@ public:
 	void SetCurrentAttribute(CharacterAttribute attribute);
 	CharacterAttribute GetAttribute(int x, int y);
 
+	void Clear();
+
 	void Visit(std::function<void(int x, int y, char character, CharacterAttribute attribute)> visitor);
 
 private:

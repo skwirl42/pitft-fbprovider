@@ -28,18 +28,22 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=2267;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2Ffbprovider.cpp;0;4
-FILE_NAME_1=96;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsole.h;0;4
-FILE_NAME_2=1641;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsole.cpp;0;4
-FILE_NAME_3=79;Make;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FMakefile;0;4
-FILE_NAME_4=8072;C++;0;EUTF-8;1;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fpng.hpp;0;4
-FILE_NAME_5=1673;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Frgb_pixel.hpp;0;4
-FILE_NAME_6=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fimage.hpp;0;8
-FILE_NAME_7=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fpixel_buffer.hpp;0;4
-FILE_NAME_8=1490;Python;0;EUTF-8;0;1;0;%2Fhome%2Fpi%2Frepos%2Frobco-os%2Fprograms%2Ffonttest.py;0;6
-FILE_NAME_9=2066;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fstring.h;0;5
-FILE_NAME_10=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fgray_pixel.hpp;0;4
+current_page=14
+FILE_NAME_0=941;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2Ffbprovider.cpp;0;4
+FILE_NAME_1=774;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsole.h;0;4
+FILE_NAME_2=3009;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsole.cpp;0;4
+FILE_NAME_3=369;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsoleFBRenderer.h;0;4
+FILE_NAME_4=855;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FConsoleFBRenderer.cpp;0;4
+FILE_NAME_5=38;Make;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Frepos%2Ffbprovider%2FMakefile;0;4
+FILE_NAME_6=8072;C++;0;EUTF-8;1;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fpng.hpp;0;4
+FILE_NAME_7=1673;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Frgb_pixel.hpp;0;4
+FILE_NAME_8=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fimage.hpp;0;8
+FILE_NAME_9=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fpixel_buffer.hpp;0;4
+FILE_NAME_10=1490;Python;0;EUTF-8;0;1;0;%2Fhome%2Fpi%2Frepos%2Frobco-os%2Fprograms%2Ffonttest.py;0;6
+FILE_NAME_11=2066;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fstring.h;0;5
+FILE_NAME_12=0;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Fpng%2B%2B%2Fgray_pixel.hpp;0;4
+FILE_NAME_13=1445;C++;0;EUTF-8;0;1;0;%2Fusr%2Finclude%2Ftime.h;0;3
+FILE_NAME_14=0;C++;0;EUTF-8;1;1;0;%2Fusr%2Finclude%2Flinux%2Ffb.h;0;4
 
 [VTE]
 last_dir=/home/pi
