@@ -11,5 +11,8 @@ module1 = Extension('PiTerm',
 
 setup (name = 'PiTerm',
        version = '1.0',
+       author = 'James Dessart',
+       author_email = 'skwirl42@gmail.com',
+       url = 'https://skwirl.com',
        description = 'Module to output a custom console to the adafruit PiTFT 3.5"',
        ext_modules = [module1])

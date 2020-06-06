@@ -65,8 +65,10 @@ static void dispose()
 static PyObject *PiTerm_alloc(PyObject *self, PyObject *args)
 {
 	bool success = false;
-	{ // font scope. Does this work the way I want it to?
-		png::image<png::gray_pixel> font("/home/pi/repos/robco-os/font/robco-termfont.png");
+	const char *fontName;
+	if (PyArg_ParseTuple(args, "s", &fontName))
+	{
+		png::image<png::gray_pixel> font(fontName);
 		ModuleData.fontbuffer = new bool[font.get_width() * font.get_height()];
 		for (uint16_t y = 0; y < font.get_height(); y++)
 		{
@@ -198,7 +200,7 @@ static PyObject *PiTerm_refresh(PyObject *self, PyObject *args)
 }
 
 static PyMethodDef PiTermMethods[] = {
-    {"alloc", PiTerm_alloc, METH_VARARGS, "Allocate needed resources."},
+    {"alloc", PiTerm_alloc, METH_VARARGS, "Allocate needed resources. Takes a string containing a path to the terminal font (expects png with 16x8 characters, of 8x13 pixels each)"},
     {"dispose", PiTerm_dispose, METH_VARARGS, "Dispose of any allocated resources"},
     {"refresh", PiTerm_refresh, METH_VARARGS, "Flushes the contents of the console to the screen"},
     {"clear", PiTerm_clear, METH_VARARGS, "Clears the console, but does not render it to the screen"},
